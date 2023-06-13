@@ -1,6 +1,7 @@
 package org.lessons.java.eventi;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Evento {
     //FIELDS
@@ -13,17 +14,17 @@ public class Evento {
     //CONSTRUCTOR
     public Evento(String titolo, LocalDate data, int postiASedereTotali) {
         if (titolo == null || titolo.isEmpty()) {
-            throw new IllegalArgumentException("Il titolo è obbligatorio");
+            throw new RuntimeException("Il titolo è obbligatorio");
         }
         this.titolo = titolo;
 
         if (data.isBefore(LocalDate.now())) {
-            throw new IllegalArgumentException("La data inserita è già passata");
+            throw new RuntimeException("La data inserita è già passata");
         }
         this.data = data;
 
         if (postiASedereTotali <= 0 || postiASedereTotali > 12700) {
-            throw new IllegalArgumentException("Devi inserire un numero di posti valido (1-12700)");
+            throw new RuntimeException("Devi inserire un numero di posti valido (1-12700)");
         }
         this.postiASedereTotali = postiASedereTotali;
 
@@ -72,8 +73,10 @@ public class Evento {
         return postiASedereTotali - numeroPrenotatiTotali;
     }
 
-    @Override
-    public String toString() {
-        return "Evento del: " + data + ", dal titolo: '" + titolo + "'";
-    }
+//    @Override
+//    public String toString(){
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyy");
+//        String dataFormattata = getData().format(formatter);
+//        return dataFormattata + "-" + getTitolo();
+//    }
 }

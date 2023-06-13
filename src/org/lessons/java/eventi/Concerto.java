@@ -41,11 +41,11 @@ public class Concerto extends Evento {
         return przformat.format(prezzo);
     }
 
-//    @Override
-//    public String toString() {
-//        return "Concerto{" +
-//                "ora=" + ora +
-//                ", prezzo=" + prezzo +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Concerto{" +
+                "ora= " + ora +
+                ", prezzo= " + prezzo +
+                '}';
+    }
 }

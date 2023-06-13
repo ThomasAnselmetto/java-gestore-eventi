@@ -11,8 +11,8 @@ public class Main {
 
 
         Evento evento1;
-        LocalDate dataFormattata;
-        String nomeEvento;
+        LocalDate dataFormattata = null;
+        String nomeEvento = null;
         int postiEvento = 0;
         boolean dataIsValid = false;
 
@@ -23,29 +23,32 @@ public class Main {
                     System.out.println("Inserisci il nome dell'evento: ");
                     nomeEvento = scanner.nextLine();
                     System.out.println("L'evento creato è " + nomeEvento);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+                } catch (RuntimeException e) {
+                    System.out.println("errore d'inserimento");
                 }
 
                 System.out.println("--------------------------------");
 
+            while (!dataIsValid) {
                 try {
                     System.out.println("Inserisci la data nel seguente formato: gg/mm/aaaa ");
                     String dateUser = scanner.nextLine();
                     dataFormattata = LocalDate.parse(dateUser, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     System.out.println("La data dell'evento è " + dataFormattata);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    dataIsValid = true;
+                } catch (RuntimeException e) {
+                    System.out.println("errore d'inserimento");
                 }
+            }
 
-                System.out.println("--------------------------------");
+            System.out.println("--------------------------------");
 
                 try {
                     System.out.println("Inserisci il numero di posti totali: (il massimo per il forum è 12700)");
                     postiEvento = Integer.parseInt(scanner.nextLine());
                     System.out.println("Il numero selezionato di posti è " + postiEvento);
-                } catch (NumberFormatException e) {
-                    throw new RuntimeException(e);
+                } catch (RuntimeException e) {
+                    System.out.println("errore d'inserimento");
                 }
 
                 System.out.println("--------------------------------");
@@ -103,7 +106,7 @@ public class Main {
         } else if (confirm.equalsIgnoreCase("n")) {
             System.out.println("Alla Prossima!!!");
         }
-
+            System.out.println(evento1.toString());
 
         scanner.close();
     }
