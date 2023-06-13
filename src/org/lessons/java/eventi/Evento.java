@@ -4,10 +4,11 @@ import java.time.LocalDate;
 
 public class Evento {
     //FIELDS
-    private String titolo;
-    private LocalDate data;
-    private int postiASedereTotali;
-    private int numeroPrenotatiTotali;
+//    intellij suggerisce final
+    private final String titolo;
+    private final LocalDate data;
+    private  int postiASedereTotali;
+    private  int numeroPrenotatiTotali;
 
     //CONSTRUCTOR
     public Evento(String titolo, LocalDate data, int postiASedereTotali) {
@@ -47,7 +48,7 @@ public class Evento {
     }
 
     //METHODS
-    public void prenota() {
+    public void prenota(int numeroPrenotazioni) {
         if (data.isBefore(LocalDate.now())) {
             throw new IllegalStateException("Hai cercato di prenotare un evento già concluso");
         }
@@ -57,7 +58,7 @@ public class Evento {
         numeroPrenotatiTotali++;
     }
 
-    public void disdici() {
+    public void disdici(int numerocancellazioni) {
         if (data.isBefore(LocalDate.now())) {
             throw new IllegalStateException("Hai cercato di disdire un evento già concluso");
         }
