@@ -16,7 +16,7 @@ public class Main {
         int postiEvento = 0;
         boolean inputCorretto = false;
 
-        while (!inputCorretto) {
+
             try {
                 System.out.println("Inserisci il nome dell'evento: ");
                 nomeEvento = scanner.nextLine();
@@ -39,10 +39,10 @@ public class Main {
 
                 evento1 = new Evento(nomeEvento, dataFormattata, postiEvento);
 
-                inputCorretto = true; // L'input è corretto, esci dal loop
+                inputCorretto = true;
             } catch (RuntimeException e) {
                 System.out.println("Errore nell'inserimento dei dati. Riprova.");
-            }
+
         }
 
         System.out.println("Perfetto hai creato un nuovo evento denominato: " + nomeEvento + "\n" + "sarà in data: " + dataFormattata + "\n" + "Ed il palazzetto avrà una capienza massima di: " + postiEvento + " Spettatori");
